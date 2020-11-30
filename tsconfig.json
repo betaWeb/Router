@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "outDir": "./dist",
+    "lib": [
+      "dom",
+      "esnext",
+      "scripthost"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "~*": [
+        "./*"
+      ]
+    },
+    "typeRoots": [
+      "src/types"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

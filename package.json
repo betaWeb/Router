@@ -1,0 +1,35 @@
+{
+  "name": "@betaweb/router",
+  "version": "1.0.0",
+  "description": "A simple JavaScript history-based router class",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "esbuild --minify --bundle --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=dist/router.min.js src/Router.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betaWeb/Router.git"
+  },
+  "keywords": [
+    "router",
+    "javascript",
+    "typescript",
+    "class",
+    "javascript-library",
+    "route",
+    "history",
+    "navigation"
+  ],
+  "author": "Cyprien GLEPIN <betaweb34@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/betaWeb/Router/issues"
+  },
+  "homepage": "https://github.com/betaWeb/Router#readme",
+  "devDependencies": {
+    "esbuild": "^0.8.17"
+  }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Router</title>
+	<script src="../dist/router.min.js"></script>
+	<script defer>
+		const router = new Router({ mode: 'hash' })
+
+        router.add('', function () {
+            console.log('Homepage')
+        })
+
+        router.add('api/:id', function (id) {
+            console.log("L'id est : " + id)
+        })
+
+		console.log(router)
+	</script>
+</head>
+<body>
+
+</body>
+</html>

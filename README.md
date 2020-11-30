@@ -1,2 +1,2 @@
 # Router
-Simple JS history-based router class
+A Simple JavaScript history-based router class

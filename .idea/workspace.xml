@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5e6bd92d-95cb-4461-8b1b-cd4e08a1bdab" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Router.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/Route.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/Router.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+        <option value="TypeScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1l1H1uC5iLU5HJxdrpHZcO7xScq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Router/example/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5e6bd92d-95cb-4461-8b1b-cd4e08a1bdab" name="Default Changelist" comment="" />
+      <created>1606757465356</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606757465356</updated>
+      <workItem from="1606757466448" duration="10826000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1639" y="985" width="552" height="224" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606767436401">
+      <screen x="0" y="33" width="3840" height="2127" />
+    </state>
+    <state x="1639" y="985" width="552" height="224" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.33.3840.2127/3840.901.2560.1080@0.33.3840.2127" timestamp="1606767436401" />
+    <state x="1477" y="714" width="876" height="764" key="find.popup" timestamp="1606770781646">
+      <screen x="0" y="33" width="3840" height="2127" />
+    </state>
+    <state x="1477" y="714" width="876" height="764" key="find.popup/0.33.3840.2127/3840.901.2560.1080@0.33.3840.2127" timestamp="1606770781646" />
+    <state x="1408" y="516" width="1009" height="1470" key="search.everywhere.popup" timestamp="1606758774438">
+      <screen x="0" y="33" width="3840" height="2127" />
+    </state>
+    <state x="1408" y="516" width="1009" height="1470" key="search.everywhere.popup/0.33.3840.2127/3840.901.2560.1080@0.33.3840.2127" timestamp="1606758774438" />
+  </component>
+</project>
