@@ -15,6 +15,17 @@
             console.log("L'id est : " + id)
         })
 
+        router.add('api/orders/:id/:action', function (id, action) {
+            console.log(`Action "${action}" on order #${id}`)
+			debugger
+        })
+
+		/*router.prefix('test', function () {
+            router.add('api/:id', function (id) {
+                console.log("Route prefixed")
+            })
+		})*/
+
 		console.log(router)
 	</script>
 </head>

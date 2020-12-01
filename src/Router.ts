@@ -14,8 +14,6 @@ export default class Router {
 
     private previous: string[] = []
 
-    private previous_index: number = -1
-
     constructor(options: RouterOptions = {}) {
         this.mode = window.history.pushState ? 'history' : 'hash'
 
@@ -25,6 +23,12 @@ export default class Router {
 
         if (options.root) {
             this.root = options.root
+        }
+
+        if (options.routes) {
+            for (let route of options.routes) {
+                this.add(route.path, route.callback, route.name)
+            }
         }
 
         this.watchUrl = this.watchUrl.bind(this)
@@ -138,12 +142,20 @@ export default class Router {
 
         this.current = this.getFragment()
 
-        const route = this.routes.find(route => route.match(this.current) !== null) || null
+        for (let route of this.routes) {
+            let match = route.match(this.current)
 
-        if (route !== null) {
-            route.callback.call(this, route.params)
-        } else {
-            this.current = null
+            if (match !== null) {
+                let params = [
+                    ...Object.values(match.params),
+                    this.current,
+                    route
+                ]
+
+                match.callback.apply(this, params)
+
+                break;
+            }
         }
     }
 }

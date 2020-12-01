@@ -1,6 +1,13 @@
 declare type RouterOptions = {
     mode?: string
     root?: string
+    routes?: RouteOption[]
+}
+
+declare type RouteOption = {
+    path: string
+    callback: Function
+    name?: string
 }
 
 declare type NavigationOptions = {
@@ -19,7 +26,6 @@ declare class Router {
     private routes: RoutesCollection
     private current: string
     private previous: string[]
-    private previous_index: number
 
     constructor(options: RouterOptions)
 

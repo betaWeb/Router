@@ -7,7 +7,7 @@ declare class Route {
 
     private readonly regex_path: RegExp
 
-    public match(path: string): boolean
+    public match(path: string): RouteMatch|null
 
     constructor(path: string, callback: Function, name: string)
 
