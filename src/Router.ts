@@ -14,6 +14,8 @@ export default class Router {
 
     private previous: string[] = []
 
+    private prefixes: string[] = []
+
     constructor(options: RouterOptions = {}) {
         this.mode = window.history.pushState ? 'history' : 'hash'
 
@@ -26,9 +28,7 @@ export default class Router {
         }
 
         if (options.routes) {
-            for (let route of options.routes) {
-                this.add(route.path, route.callback, route.name)
-            }
+            this.defineRoutes(options.routes)
         }
 
         this.watchUrl = this.watchUrl.bind(this)
@@ -36,58 +36,66 @@ export default class Router {
         this.listen()
     }
 
-    add(path: string, cb: Function, name?: string): Router {
+    public add(path: string, cb: Function, name?: string): Router {
+        if (this.prefixes.length > 0) {
+            path = this.prefixes.join('/') + '/' + path
+        }
+
         this.routes.push(
             // @ts-ignore
-            new Route(path, cb, name)
+            new Route(Router.clearSlashes(path), cb, name)
         )
 
         return this
     }
 
-    remove(path: string): Router {
+    public remove(path: string): Router {
         this.routes = this.routes.filter(route => route.path !== path)
 
         return this
     }
 
-    back() {
+    public back(): void {
         if (this.mode === 'history') {
             window.history.back()
         }
     }
 
-    forward() {
+    public forward(): void {
         if (this.mode === 'history') {
             window.history.forward()
         }
     }
 
-    flush(): Router {
+    public flush(): Router {
         this.routes = []
 
         return this
     }
 
-    navigate(options: NavigationOptions = {}): Router {
+    public navigate(options: NavigationOptions|string = {}): Router {
         let path: string
 
-        if (options.name) {
-            const params = options.params || {};
+        if (typeof options === 'string') {
+            path = options
+        } else {
+            if (options.name) {
+                const params = options.params || {};
 
-            const route = this.routes.find(route => route.name === options.name)
+                const route = this.routes.find(route => route.name === options.name)
 
-            if (route) {
-                path = route.path
+                if (route) {
+                    path = route.path
 
-                for (let key in params) {
-                    if (params.hasOwnProperty(key)) {
-                        path = path.replace(':' + key, params[key])
+                    for (let key in params) {
+                        if (params.hasOwnProperty(key)) {
+                            path = path.replace(':' + key, params[key])
+                        }
                     }
                 }
+            } else {
+                path = options.path
             }
-        } else {
-            path = options.path
         }
 
         if (!path) {
@@ -95,7 +103,7 @@ export default class Router {
         }
 
         if (this.mode === 'history') {
-            window.history.pushState(null, null, this.root + this.clearSlashes(path))
+            window.history.pushState(null, null, this.root + Router.clearSlashes(path))
         } else {
             const href = `${window.location.href.replace(/#(.*)$/, '')}#${path}`
 
@@ -107,18 +115,35 @@ export default class Router {
         return this
     }
 
-    clearSlashes(path: string) {
-        return path
-            .toString()
-            .replace(/\/$/, '')
-            .replace(/^\//, '')
+    public group(prefix: string, callback: Function): Router {
+        this.prefixes.unshift(
+            Router.clearSlashes(prefix)
+        )
+
+        callback.apply(this)
+
+        this.prefixes.shift()
+
+        return this
     }
 
-    getFragment(): string {
+    private defineRoutes(routes: RouteOption[]): void {
+        for (let route of routes) {
+            if (route.group) {
+                this.group(route.group, () => {
+                    this.add(route.path, route.callback, route.name)
+                })
+            } else {
+                this.add(route.path, route.callback, route.name)
+            }
+        }
+    }
+
+    private getFragment(): string {
         let fragment: string
 
         if (this.mode === 'history') {
-            fragment = this.clearSlashes(decodeURI(window.location.pathname + window.location.search))
+            fragment = Router.clearSlashes(decodeURI(window.location.pathname + window.location.search))
             fragment = fragment.replace(/\?(.*)$/, '')
             fragment = this.root !== '/' ? fragment.replace(this.root, '') : fragment
         } else {
@@ -126,16 +151,16 @@ export default class Router {
 
             fragment = match ? match[1] : ''
         }
-        return this.clearSlashes(fragment)
+        return Router.clearSlashes(fragment)
     }
 
-    listen(): void {
+    private listen(): void {
         clearInterval(this.interval)
 
         this.interval = setInterval(this.watchUrl, 50)
     }
 
-    watchUrl(): void {
+    private watchUrl(): void {
         if (this.current === this.getFragment()) {
             return
         }
@@ -157,6 +182,10 @@ export default class Router {
                 break;
             }
         }
+    }
+
+    private static clearSlashes(path: string) {
+        return path.toString().replace(/(^\/)|(\/$)/ig, '')
     }
 }
 

@@ -7,7 +7,8 @@ declare type RouterOptions = {
 declare type RouteOption = {
     path: string
     callback: Function
-    name?: string
+    name?: string,
+    group?: string
 }
 
 declare type NavigationOptions = {
@@ -25,16 +26,25 @@ declare class Router {
 
     private routes: RoutesCollection
     private current: string
+    private interval: number
     private previous: string[]
+    private prefixes: string[]
 
     constructor(options: RouterOptions)
 
     public add(path: string, cb: Function, name?: string): Router
     public remove(path: string): Router
-    public navigate(path: string, params: object): Router
-
+    public navigate(options: NavigationOptions|string): Router
     public flush(): Router
-    private clearSlashes(path: string): string
-    private matchRoute(): void
+    public back(): void
+    public forward(): void
+    public group(prefix: string, callback: Function): Router
+
+    private defineRoutes(routes: RouteOption[]): void
+    private getFragment(): string
+    private listen(): void
+    private watchUrl(): void
+
+    private static clearSlashes(path: string): string
 
 }

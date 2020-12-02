@@ -4,8 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Router</title>
 	<script src="../dist/router.min.js"></script>
+</head>
+<body>
+	<button id="go-to">Go to page</button>
 	<script defer>
-		const router = new Router({ mode: 'hash' })
+        const router = new Router({ mode: 'hash' })
 
         router.add('', function () {
             console.log('Homepage')
@@ -13,23 +16,41 @@
 
         router.add('api/:id', function (id) {
             console.log("L'id est : " + id)
-        })
+        }, 'api')
 
         router.add('api/orders/:id/:action', function (id, action) {
             console.log(`Action "${action}" on order #${id}`)
-			debugger
         })
 
-		/*router.prefix('test', function () {
+        router.group('test', function () {
             router.add('api/:id', function (id) {
-                console.log("Route prefixed")
+                console.log("Route prefixed", id)
             })
-		})*/
 
-		console.log(router)
+            router.group('sub', function () {
+                router.add('api/:id', function (id) {
+                    console.log("Route sub prefixed", id)
+                })
+            })
+            router.add('aze', function () {
+                console.log("Route aze")
+            })
+        })
+
+        router.add('aze', function () {
+            console.log(`aze`)
+        })
+
+        document.getElementById('go-to').addEventListener('click', function () {
+            router.navigate({
+                name: 'api',
+				params: {
+                    id: 75
+				}
+            })
+        })
+
+        console.log(router)
 	</script>
-</head>
-<body>
-
 </body>
 </html>

@@ -1,13 +1,14 @@
 {
   "name": "@betaweb/router",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple JavaScript history-based router class",
   "main": "index.js",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "build": "esbuild --minify --bundle --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=dist/router.min.js src/Router.ts"
+    "build": "esbuild --minify --bundle --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=dist/router.min.js src/Router.ts",
+    "watch": "ts-node-script scripts/esbuild-dev.ts"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,10 @@
   },
   "homepage": "https://github.com/betaWeb/Router#readme",
   "devDependencies": {
-    "esbuild": "^0.8.17"
+    "@types/node": "^14.14.10",
+    "chokidar": "^3.4.3",
+    "esbuild": "^0.8.17",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
   }
 }
