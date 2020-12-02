@@ -4,7 +4,7 @@ A Simple JavaScript history-based router class
 ## Getting started
 Just add the `router.min.js` script on your page.
 ```html
-script src="path/to/router.min.js"></script>
+<script src="path/to/router.min.js"></script>
 ```
 
 After, you just have to instanciate a new Router, and declare routes as follow :
